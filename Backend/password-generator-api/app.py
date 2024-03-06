@@ -10,7 +10,7 @@ from password import generator
 class GeneratePasswordView(Resource):
     def get(self, length):
         # generating a random password 
-        password = generator.Password(length).generate_password()
+        password = generator.Password(length, True).generate_password()
         password_length = len(password)
         
         return {"password": password, "length": password_length}, 200

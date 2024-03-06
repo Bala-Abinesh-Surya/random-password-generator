@@ -2,9 +2,13 @@ import random
 import math
 
 class Password:
-    def __init__(self, length):
+    def __init__(self, length, numbers):
         # password must be atleast 15 characters long
         self.length = self.get_valid_password_length(length)
+
+        # numbers denote the user's choice whether to include numbers in the password
+        # True or False
+        self.numbers = numbers
 
     
     # getting the valid password length
@@ -27,14 +31,37 @@ class Password:
         password = ""
 
         for i in range(self.length):
-            password += self.random_uppercase_or_lowercase()
+            password += self.character_type_decision()
         
         return password
     
+
+    # decision making
+    # each character in the password can be either:
+    #   - an uppercase or lowercase letter
+    #   - a number from 0 to 9
+    #   - a special character
+    def character_type_decision(self):
+        # password has both numbers and alphabets
+        if self.numbers:
+            choice = random.randint(0, 1)
+
+            if choice:
+                # choice is 1
+                # generate a random number
+                return self.random_number()
+            
+            return self.random_uppercase_or_lowercase()
+
+        # password contains only an alphabet
+        return self.random_uppercase_or_lowercase()
+
+
     # generating a random number from 0 to 9
     def random_number(self):
-        return random.randint(0, 9)
+        return str(random.randint(0, 9))
     
+
     # generating a random alphabet
     def random_uppercase_or_lowercase(self):
         choice = random.randint(0, 1)
