@@ -31,6 +31,9 @@ class Password:
         
         return password
     
+    # generating a random number from 0 to 9
+    def random_number(self):
+        return random.randint(0, 9)
     
     # generating a random alphabet
     def random_uppercase_or_lowercase(self):
@@ -57,4 +60,4 @@ class Password:
 
 
 if __name__ == "__main__":
-    print(Password().generate_password())
+    print(Password(15).generate_password())
