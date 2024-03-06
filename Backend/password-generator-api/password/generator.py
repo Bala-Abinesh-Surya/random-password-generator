@@ -58,9 +58,7 @@ class Password:
             elif choice == 2:
                 # choice is 2
                 # generate a random special character
-                return self.random_special_character()
-            
-            return self.random_uppercase_or_lowercase()
+                return self.random_special_character()            
         
         # password contains letters and numbers
         elif self.numbers:
@@ -71,8 +69,6 @@ class Password:
                 # generate a random number
                 return self.random_number()
             
-            return self.random_uppercase_or_lowercase()
-        
         # password contains letters and special characters
         elif self.special:
             choice = random.randint(0, 1)
@@ -82,9 +78,7 @@ class Password:
                 # generate a random special character
                 return self.random_special_character()
             
-            return self.random_uppercase_or_lowercase()
-
-        # password contains only an alphabet
+        # generating a random letter
         return self.random_uppercase_or_lowercase()
 
 
@@ -125,4 +119,4 @@ class Password:
 
 
 if __name__ == "__main__":
-    print(Password(15, False, True).generate_password())
+    print(Password(25, False, False).generate_password())
