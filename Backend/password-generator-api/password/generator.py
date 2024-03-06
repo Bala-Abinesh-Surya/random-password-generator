@@ -2,13 +2,16 @@ import random
 import math
 
 class Password:
-    def __init__(self, length, numbers):
+    def __init__(self, length, numbers, special):
         # password must be atleast 15 characters long
         self.length = self.get_valid_password_length(length)
 
         # numbers denote the user's choice whether to include numbers in the password
         # True or False
         self.numbers = numbers
+
+        # special denote the user's choice whether to include special characters in the password
+        self.special = special
 
     
     # getting the valid password length
@@ -42,14 +45,42 @@ class Password:
     #   - a number from 0 to 9
     #   - a special character
     def character_type_decision(self):
-        # password has both numbers and alphabets
-        if self.numbers:
+        # password has everything
+        # letters, numbers and special characters
+        if self.numbers and self.special:
+            choice = random.randint(0, 2)
+
+            if choice == 1:
+                # choice is 1
+                # generate a random number
+                return self.random_number()
+            
+            elif choice == 2:
+                # choice is 2
+                # generate a random special character
+                return self.random_special_character()
+            
+            return self.random_uppercase_or_lowercase()
+        
+        # password contains letters and numbers
+        elif self.numbers:
             choice = random.randint(0, 1)
 
             if choice:
                 # choice is 1
                 # generate a random number
                 return self.random_number()
+            
+            return self.random_uppercase_or_lowercase()
+        
+        # password contains letters and special characters
+        elif self.special:
+            choice = random.randint(0, 1)
+
+            if choice:
+                # choice is 1
+                # generate a random special character
+                return self.random_special_character()
             
             return self.random_uppercase_or_lowercase()
 
@@ -94,4 +125,4 @@ class Password:
 
 
 if __name__ == "__main__":
-    print(Password(15).generate_password())
+    print(Password(15, False, True).generate_password())
