@@ -1,1 +1,5 @@
+# ignore all the python cache files
 /**/__pycache__
+
+# ignore all the environment variable configuration files
+/**/.env
