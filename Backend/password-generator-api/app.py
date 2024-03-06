@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
@@ -31,20 +32,23 @@ class GeneratePasswordView(Resource):
     
 
 # accessing the secret key from the environment variable configuration file
-# def get_secret_key():
-#     secret_key = os.environ.get('FLASK_APP_SECRET_KEY')
+def get_secret_key():
+    # loading the environment variables from the .env file
+    load_dotenv()
 
-#     # Check if the secret key is set
-#     if not secret_key:
-#         raise ValueError("No secret key set for Flask application. Please set FLASK_APP_SECRET_KEY environment variable.")
+    secret_key = os.getenv('FLASK_APP_SECRET_KEY')
+
+    # Check if the secret key is set
+    if not secret_key:
+        raise ValueError("No secret key set for Flask application. Please set FLASK_APP_SECRET_KEY environment variable.")
     
-#     return str(secret_key)
+    return str(secret_key)
 
     
 def init_app():
     # creating an instance of Flask application
     app = Flask(__name__)
-    app.config["SECRET_KEY"] = "DEFINITELY_NOT_A_SECRET_KEY"
+    app.config["SECRET_KEY"] = get_secret_key()
 
     # creating an Api instance and passing Flask application as argument
     api = Api(app)
