@@ -62,6 +62,13 @@ class Password:
         return str(random.randint(0, 9))
     
 
+    # generating a random special character from the list of special characters
+    def random_special_character(self):
+        special_characters = ["!", "@", "#", "$", "%", "&", "(", ")", "+", "{", "}", "?", "/", ":", "|"]
+
+        return random.choice(special_characters)
+    
+
     # generating a random alphabet
     def random_uppercase_or_lowercase(self):
         choice = random.randint(0, 1)
