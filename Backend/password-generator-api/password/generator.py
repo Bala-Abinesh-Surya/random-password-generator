@@ -89,7 +89,7 @@ class Password:
 
     # generating a random special character from the list of special characters
     def random_special_character(self):
-        special_characters = ["!", "@", "#", "$", "%", "&", "(", ")", "+", "{", "}", "?", "/", ":", "|"]
+        special_characters = ["!", "@", "#", "$", "%", "&", "(", ")", "+", "{", "}", "?", "/", ":", "*"]
 
         return random.choice(special_characters)
     
