@@ -119,4 +119,5 @@ class Password:
 
 
 if __name__ == "__main__":
+    # generating a password of length 25 characters with only alphabets
     print(Password(25, False, False).generate_password())

@@ -1,6 +1,6 @@
 ## Password Requirements: ##
-- Minimum of 10 characters length
-- Can be maximum 20 characters length
+- Minimum of 15 characters length
+- Can be maximum 30 characters length
 - Must contain atleast lowercase and uppercase letters
 - Can have special characters, numbers if the user wants
 
